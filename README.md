@@ -3,7 +3,7 @@
 # About
 cryoConverter.py -- Creates a star file from a cisTEM database
 
-cryoConverter.py extras these data elements
+cryoConverter.py extracts these data elements
 ```
 _rlnMicrographName #1
 _rlnDefocusU #2
