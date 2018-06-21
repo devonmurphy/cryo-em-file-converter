@@ -7,7 +7,7 @@ cryoConverter.py -- Creates a star file from a cisTEM database.
 ```
 git clone https://github.com/Rick-Baker/cryo-em-file-converter
 cd cryo-em-file-converter/
-cp cryoConverter.py /usr/local/bin
+sudo cp cryoConverter.py /usr/local/bin
 ```
 
 # Usage
