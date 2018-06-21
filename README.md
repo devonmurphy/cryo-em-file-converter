@@ -1,7 +1,9 @@
 # cryo-em-file-converter
 
 # About
-cryoConverter.py -- Creates a star file from a cisTEM database of this format:
+cryoConverter.py -- Creates a star file from a cisTEM database
+
+cryoConverter.py extras these data elements
 ```
 _rlnMicrographName #1
 _rlnDefocusU #2
