@@ -1,7 +1,8 @@
 # cryo-em-file-converter
 
 # About
-Creates a star file from a cisTEM database.
+cryoConverter.py -- Creates a star file from a cisTEM database.
+
 
 # Install
 ```
@@ -13,9 +14,9 @@ cp cryoConverter.py /usr/local/bin
 # Usage
 `cd` into the directory with the cisTEM database you want to convert.
 Once there run:
-'''
+```
 cryoConverter.py
-'''
+```
 
 # Important
 Currently cryoConverter.py assumes that the sql3lite datbase name matches the current cisTEM working directory. For example, if your cisTEM project is called `18apr23g` then your database name better be `18apr23g.db`
