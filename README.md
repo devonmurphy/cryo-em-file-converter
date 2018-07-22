@@ -28,7 +28,7 @@ sudo cp cryoConverter.py /usr/local/bin
 To create a star file from a cisTEM database the user must provide the magnification of the microscope that captured the data with the -m or --magnification option.
 
 ```
-cryoConverter.py -d path/to/cisTEM/database -m 36000
+cryoConverter.py -d path/to/cisTEM/database.db -m 36000
 ```
 
 If the -d or --database arguement is not provided, cryoConverter.py assumes that the current working directory is the cisTEM database name.
