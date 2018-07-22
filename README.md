@@ -24,9 +24,11 @@ sudo cp cryoConverter.py /usr/local/bin
 ```
 
 # Usage
-`cd` into the directory with the cisTEM database you want to convert then run `cryoConverter.py`
 
-# Important
-`_rlnMagnification` is hardcoded to be `36000.000000` until I figure out how to get this.
+To create a star file from a cisTEM database the user must provide the magnification of the microscope that captured the data with the -m or --magnification option.
 
-Currently cryoConverter.py assumes that the sql3lite datbase name matches the current cisTEM working directory. For example, if your cisTEM project is called `18apr23g` then your database name should be `18apr23g.db` or else it will fail.
+```
+cryoConverter.py -d path/to/cisTEM/database -m 36000
+```
+
+If the -d or --database arguement is not provided, cryoConverter.py assumes that the current working directory is the cisTEM database name.

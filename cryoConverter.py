@@ -2,6 +2,7 @@
 import sqlite3
 import os
 from time import localtime, strftime
+import argparse
 
 DATABASE_NAME = os.path.split(os.getcwd())[1] + ".db"
 MAGNIFICATION = "36000.000000"
@@ -20,6 +21,14 @@ _rlnMagnification #8
 _rlnDetectorPixelSize #9
 '''
 
+# Get the arguements
+ap = argparse.ArgumentParser()
+ap.add_argument("-m", "--magnification", type = float, required = True,
+        help="magnification of microscope")
+ap.add_argument("-d", "--database", default=DATABASE_NAME,
+        help="path to cisTEM database")
+args = vars(ap.parse_args())
+
 def get_sql_data():
     data = "" 
     filename = []
@@ -30,7 +39,7 @@ def get_sql_data():
     amplitude_contrast = []
     voltage = []
     spherical_aberration = []
-    conn = sqlite3.connect(DATABASE_NAME)
+    conn = sqlite3.connect(args['database'])
     cursor = conn.cursor()
 
     cursor.execute("select filename, pixel_size from image_assets")
@@ -51,7 +60,7 @@ def get_sql_data():
         spherical_aberration.append(str(row[1]))
 
     for row in range(0,len(filename)):
-        data += "  "+"   ".join([filename[row],defocus1[row],defocus2[row],defocus_angle[row],voltage[row],spherical_aberration[row],amplitude_contrast[row],str(MAGNIFICATION),pixel_size[row]])+"\n"
+        data += "  "+"   ".join([filename[row],defocus1[row],defocus2[row],defocus_angle[row],voltage[row],spherical_aberration[row],amplitude_contrast[row],str(args['magnification']),pixel_size[row]])+"\n"
     return data
 
 def write_star_file(data):
