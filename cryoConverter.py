@@ -27,6 +27,7 @@ ap.add_argument("-m", "--magnification", type = float, required = True,
         help="magnification of microscope")
 ap.add_argument("-d", "--database", default=DATABASE_NAME,
         help="path to cisTEM database")
+ap.add_argument("-p", "--micro_path", type = str, required = False)
 args = vars(ap.parse_args())
 
 def get_sql_data():
@@ -44,8 +45,14 @@ def get_sql_data():
 
     cursor.execute("select filename, pixel_size from image_assets")
     for row in cursor:
-        filename.append(str(row[0]))
         pixel_size.append(str(row[1]))
+        if args['micro_path'] is not None:
+            path = str(row[0])
+            pathSplit = path.split('/')
+            micro_path = '%s/%s' %(args['micro_path'], pathSplit[-1])
+            filename.append(os.path.abspath(micro_path))
+        else:
+            filename.append(str(row[0]))
 
     cursor.execute("select DEFOCUS1, DEFOCUS2, DEFOCUS_ANGLE, AMPLITUDE_CONTRAST from estimated_ctf_parameters")
     for row in cursor:
